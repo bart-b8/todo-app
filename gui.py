@@ -8,7 +8,8 @@ sg.theme("DarkTanBlue")
 label = sg.Text("Type in a to-do")
 clock_lbl = sg.Text("", key='clock')
 input_box = sg.InputText(tooltip="Enter todo", key='todo')
-add_button = sg.Button("Add")
+add_button = sg.Button(size=2, image_source="add.png", key='Add', mouseover_colors="LightBlue2",
+                       tooltip="Add Todo")
 list_box = sg.Listbox(values=functions.get_todos(), key='todos', enable_events=True, size=[45,10])
 edit_button = sg.Button("Edit")
 complete_button = sg.Button("Complete")
@@ -20,7 +21,7 @@ window = sg.Window('My To-Do App',
                    font=('Helvetica', 20))
 
 while True:
-    event, values = window.read()
+    event, values = window.read(timeout=200)
     window['clock'].update(value=time.strftime("%b %d, %Y %H:%M:%S"))
     print(event)
     print(values)
@@ -56,7 +57,10 @@ while True:
                 sg.popup("please select item first", font=("Helvetica", 20))
 
         case 'todos':
-            window['todo'].update(value=values['todos'][0])
+            try:
+                window['todo'].update(value=values['todos'][0])
+            except IndexError:
+                continue
 
         case 'Exit':
             break
