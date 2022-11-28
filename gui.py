@@ -31,7 +31,7 @@ while True:
     match event:
         case "Add":
             todos = functions.get_todos()
-            todos.append(values['todo'] + "\n")
+            todos.append(values['todo'])
             functions.write_todos(todos)
             window["todos"].update(values=todos)
 
@@ -41,7 +41,7 @@ while True:
                 new_todo = values['todo']
                 todos = functions.get_todos()
                 index = todos.index(todo)
-                todos[index] = new_todo + '\n'
+                todos[index] = new_todo
                 functions.write_todos(todos)
                 window["todos"].update(values=todos)
             except IndexError:

@@ -11,12 +11,14 @@ if not os.path.exists(FILEPATH):
 def get_todos(filepath = FILEPATH):
     """ Return list with all todos. """
     with open(filepath, 'r') as file_local:
-        todos_local = file_local.readlines()
+        # todos_local = file_local.readlines()
+        todos_local = file_local.read().splitlines() #Removes \n from each line
     return todos_local
 
 def write_todos(todos_arg, filepath = FILEPATH):
     """ Accepts lists of stirngs. All should end with '\n' 
     and writes it to the file given. 
     """
+    todos_arg = [arg + '\n' for arg in todos_arg]
     with open(filepath, 'w') as file:
         file.writelines(todos_arg)

@@ -8,9 +8,9 @@ while True :
 
     if user_action.startswith("add"):
         if len(user_action) <= 4:
-            todo = input("Enter a todo: ") + "\n"
+            todo = input("Enter a todo: ")
         else:
-            todo = user_action[4:] + "\n"
+            todo = user_action[4:]
 
         todos = get_todos()
         todos.append(todo.capitalize())
@@ -20,7 +20,7 @@ while True :
     elif user_action.startswith("show"):
         todos = get_todos()
         for index, item in enumerate(todos):
-            print("{}. {}".format(index+1, item.strip('\n')))
+            print("{}. {}".format(index+1, item))
 
     elif user_action.startswith("edit"):
         try:
@@ -28,11 +28,11 @@ while True :
                 print("overview of the todo's")
                 todos = get_todos()
                 for index, item in enumerate(todos):
-                    print("{}. {}".format(index + 1 , item.strip('\n')))
+                    print("{}. {}".format(index + 1 , item))
                 number = int(input("Number of the todo to edit: "))-1
             else:
                 number = int(user_action[5:]) - 1
-            todos[number] = input("New version of todo {}: ".format(number+1)) + '\n'
+            todos[number] = input("New version of todo {}: ".format(number+1))
             write_todos(todos)
             print('Got it!')
         except ValueError:
@@ -45,7 +45,7 @@ while True :
                 print("overview of the todo's")
                 todos = get_todos()
                 for index, item in enumerate(todos):
-                    print("{}. {}".format(index + 1 , item.strip('\n')))
+                    print("{}. {}".format(index + 1 , item))
                 number = int( input("Number of todo completed: "))-1
             else:
                 number = int(user_action[9:])-1
