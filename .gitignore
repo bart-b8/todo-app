@@ -1,3 +1,6 @@
 /__pycache__/
 /bonus/
 /.venv/
+/build/
+/dist/
+gui.spec
