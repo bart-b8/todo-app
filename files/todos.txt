@@ -1,6 +1,3 @@
-Some sample todos
-For testing purposes
-This is gonna be dull otherwise.
-Test the todo app
-test again
-Fix the computer
+get
+fret
+tread
